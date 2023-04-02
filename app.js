@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Campground = require('./models/campground');
 const methodOverride = require('method-override');
+const ejsMate = require('ejs-mate');
 
 
 
@@ -24,6 +25,7 @@ const app = express();
 
 
 //all set and use conditons for npm packages
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
