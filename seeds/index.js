@@ -59,6 +59,7 @@ const seedDB = async () => {
             location: `${cities[citySeed].city}, ${cities[citySeed].state}`,
             description:
                 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis, nihil tempora vel aspernatur quod aliquam illum! Iste impedit odio esse neque veniam molestiae eligendi commodi minus, beatae accusantium, doloribus quo!',
+            author: '6432a0860993d3b4c496cb0a'
         })
         await camp.save();
     }
