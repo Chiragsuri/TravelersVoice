@@ -17,25 +17,25 @@ async function main() {
 }
 
 //image function
-async function seedImg(random10) {
-    try {
-        const res = await axios.get('https://api.pexels.com/v1/search', {
-            headers: {
-                Accept: "application/json",
-                Authorization: "nHuUrBhegUtp8jmJdMjVPnay7s24CYJn67GQADDOKjVzrcjSuKzezbBr"
-            },
-            params: {
-                query: 'camping'
-            }
+// async function seedImg(random10) {
+//     try {
+//         const res = await axios.get('https://api.pexels.com/v1/search', {
+//             headers: {
+//                 Accept: "application/json",
+//                 Authorization: "nHuUrBhegUtp8jmJdMjVPnay7s24CYJn67GQADDOKjVzrcjSuKzezbBr"
+//             },
+//             params: {
+//                 query: 'camping'
+//             }
 
-        })
-        // console.log(res.data.photos[random10].src.original);
-        return res.data.photos[random10].src.original;
-    }
-    catch (err) {
-        console.log(err);
-    }
-}
+//         })
+//         // console.log(res.data.photos[random10].src.original);
+//         return res.data.photos[random10].src.original;
+//     }
+//     catch (err) {
+//         console.log(err);
+//     }
+// }
 
 //
 
@@ -54,12 +54,22 @@ const seedDB = async () => {
 
         // seed data into campground
         const camp = new Campground({
-            imageUrl: await seedImg(),
+            // imageUrl: await seedImg(),
             title: `${descriptors[descriptorsSeed]} ${places[placeSeed]}`,
             location: `${cities[citySeed].city}, ${cities[citySeed].state}`,
             description:
                 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis, nihil tempora vel aspernatur quod aliquam illum! Iste impedit odio esse neque veniam molestiae eligendi commodi minus, beatae accusantium, doloribus quo!',
-            author: '6432a0860993d3b4c496cb0a'
+            author: '6432a0860993d3b4c496cb0a',
+            images: [
+                {
+                    url: 'https://res.cloudinary.com/da9wjtglj/image/upload/v1681231137/YelpCamp/wkznpd9wwhsejdfrtwma.jpg',
+                    filename: 'YelpCamp/wkznpd9wwhsejdfrtwma'
+                },
+                {
+                    url: 'https://res.cloudinary.com/da9wjtglj/image/upload/v1681231140/YelpCamp/gebb9jfynzwd7labkvqm.jpg',
+                    filename: 'YelpCamp/gebb9jfynzwd7labkvqm'
+                }
+            ]
         })
         await camp.save();
     }
