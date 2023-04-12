@@ -46,8 +46,9 @@ const sample = array => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
     await Campground.deleteMany({});
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 300; i++) {
         // setup
+        const random1000 = Math.floor(Math.random() * 1000);
         const placeSeed = Math.floor(Math.random() * places.length)
         const descriptorsSeed = Math.floor(Math.random() * descriptors.length)
         const citySeed = Math.floor(Math.random() * cities.length)
@@ -62,7 +63,10 @@ const seedDB = async () => {
             author: '6432a0860993d3b4c496cb0a',
             geometry: {
                 type: "Point",
-                coordinates: [-113.1331, 47.0202]
+                coordinates: [
+                    cities[random1000].longitude,
+                    cities[random1000].latitude
+                ]
             },
             images: [
                 {
