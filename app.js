@@ -187,6 +187,7 @@ app.use((err, req, res, next) => {
 
 
 // SERVER LISTENING ON PORT
-app.listen(3000, () => {
-    console.log('SERVING ON PORT 3000!')
+Port = 3000 || process.env.PORT;
+app.listen(Port, () => {
+    console.log(`SERVING ON PORT ${Port}!`)
 })
